@@ -3,6 +3,7 @@ import { Button, StyleSheet } from 'react-native';
 
 import FormInput from '@/components/forms/input';
 import { HelloWave } from '@/components/hello-wave';
+import LoginForm from '@/components/login-form';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -51,6 +52,9 @@ export default function LoginScreen() {
             disabled={isSubmitting}
           />
         </ThemedView>
+      </ThemedView>
+      <ThemedView>
+        <LoginForm />
       </ThemedView>
     </ParallaxScrollView>
   );
