@@ -9,13 +9,45 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import React from 'react';
 
-const serverAction = (login: string, password: string) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      alert(`Login: ${login} and Password: ${password}`);
-      resolve(null);
-    }, 1000)
+const serverAction = async (login: string, password: string) => {
+  const response = await fetch('http://localhost:3000/api/users/login', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      login, password,
+    }),
   });
+
+  const todos = await fetch('http://localhost:3000/api/todos', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const oneTodo = await fetch('http://localhost:3000/api/todos/a646628c-4c08-42fb-9eed-53c62302a4cd', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+
+  console.log('user', await response.json());
+
+  console.log('todos', await todos.json());
+
+  console.log('one todo', await oneTodo.json());
+  // return new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     alert(`Login: ${login} and Password: ${password}`);
+  //     resolve(null);
+  //   }, 1000)
+  // });
 }
 
 export default function LoginScreen() {

@@ -31,7 +31,6 @@ const LoginForm = () => {
   });
 
   const onSubmit = React.useCallback(async (data) => {
-    debugger;
     console.log(data);
   }, []);
 
@@ -52,7 +51,7 @@ const LoginForm = () => {
             <Button
 
               title='Login'
-              onPress={onSubmit}
+              onPress={handleSubmit(onSubmit)}
             />
           </ThemedView>
         </form>
