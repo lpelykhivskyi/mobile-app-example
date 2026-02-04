@@ -12,9 +12,14 @@ const serverAction = (login: string, password: string) => {
     setTimeout(() => {
       alert(`Login: ${login} and Password: ${password}`);
       resolve(null);
-    }, 1000)
+    }, 2000)
   });
 }
+
+// type LoginFormType = {
+//   login: string;
+//   password: string;
+// }
 
 const schema = yup.object({
   login: yup.string().required().max(16).min(8),
@@ -26,12 +31,18 @@ export type LoginFormProps = {
 };
 
 const LoginForm = () => {
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, formState } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      login: '',
+      password: '',
+    },
   });
 
   const onSubmit = React.useCallback(async (data) => {
     console.log(data);
+
+    await serverAction(data.login, data.password)
   }, []);
 
   return (
@@ -49,9 +60,9 @@ const LoginForm = () => {
           />
           <ThemedView style={styles.buttonContainer}>
             <Button
-
-              title='Login'
+              title={formState.isLoading ? `loading...` : 'Login'}
               onPress={handleSubmit(onSubmit)}
+              disabled={formState.isLoading}
             />
           </ThemedView>
         </form>
