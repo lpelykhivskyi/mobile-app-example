@@ -1,162 +1,67 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import TextInput from '@/components/forms/input';
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Button } from '@react-navigation/elements';
+import CustomButton from '@/components/custom-button';
 import { Link } from 'expo-router';
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
-  const [userName, setUserName] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
-  const handleSubmit = React.useCallback(() => {
-    console.log(`User name and password: ${userName} ${password}`);
-  }, [password, userName]);
-
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/about">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-        <TextInput placeholder='UserName' onChange={setUserName} backgroundColor='#ff0000' />
-        <TextInput placeholder='Password' onChange={setPassword} secureTextEntry={true} />
-        <Button onPressOut={handleSubmit}>Submit</Button>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
-
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
-
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href='/(account)/login'>
-          <ThemedText>Login</ThemedText>
-        </Link>
-        <Link href='/(account)/registration'>
-          <ThemedText>Registration</ThemedText>
-        </Link>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.imageContainer} />
+      <Text style={styles.title}>All your favorites</Text>
+      <Text style={styles.contentText}>Get all your loved foods in one once place, you just place the orer we do the rest</Text>
+      <View style={styles.dotsContainer} />
+      <View style={styles.buttonContainer}>
+        <CustomButton title='Next' />
+      </View>
+      <View style={styles.linkContainer}>
+        <Link style={styles.link} href={'/'}>Skip</Link>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    display: 'flex',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    height: '100%',
+    paddingLeft: 24,
+    paddingRight: 24,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  imageContainer: {
+    width: 240,
+    height: 292,
+    borderRadius: 12,
+    backgroundColor: '#98A8B8',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 63,
+  },
+  contentText: {
+    lineHeight: 24,
+    fontSize: 16,
+    color: '#646982',
+    marginTop: 18,
+    textAlign: 'center',
+  },
+  dotsContainer: {
+    width: 76,
+    height: 10,
+    backgroundColor: '#FF7622',
+    marginTop: 32,
+  },
+  buttonContainer: {
+    width: '100%',
+    marginTop: 69,
+  },
+  linkContainer: {
+    marginTop: 16,
+  },
+  link: {
+    color: '#646982',
   },
 });
