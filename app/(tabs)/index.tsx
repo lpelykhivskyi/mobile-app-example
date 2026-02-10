@@ -1,12 +1,12 @@
 import CustomButton from '@/components/custom-button';
+import MainContainer from '@/components/main-container';
 import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
+    <MainContainer>
       <View style={styles.imageContainer} />
       <Text style={styles.title}>All your favorites</Text>
       <Text style={styles.contentText}>Get all your loved foods in one once place, you just place the orer we do the rest</Text>
@@ -15,21 +15,13 @@ export default function HomeScreen() {
         <CustomButton title='Next' />
       </View>
       <View style={styles.linkContainer}>
-        <Link style={styles.link} href={'/'}>Skip</Link>
+        <Link style={styles.link} href={'/home'}>Skip</Link>
       </View>
-    </SafeAreaView>
+    </MainContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    paddingLeft: 24,
-    paddingRight: 24,
-  },
   imageContainer: {
     width: 240,
     height: 292,
