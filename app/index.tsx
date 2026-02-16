@@ -1,10 +1,55 @@
+import Categories from '@/components/categories';
 import MainContainer from '@/components/main-container';
+import { Category } from "@/types/category";
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
+
+const categories: Category[] = [{
+  id: '12345',
+  title: 'All',
+  imageUrl: '#98A8B8',
+  isActive: false,
+  startingPrice: 50,
+}, {
+  id: '1234325',
+  title: 'Pizza',
+  imageUrl: '#98A8B8',
+  isActive: false,
+  startingPrice: 10,
+}, {
+  id: '1235645',
+  title: 'Burger',
+  imageUrl: '#98A8B8',
+  isActive: true,
+  startingPrice: 90,
+}, {
+  id: '1237745',
+  title: 'Hot Dog',
+  imageUrl: '#98A8B8',
+  isActive: false,
+  startingPrice: 200,
+}, {
+  id: '1231231345',
+  title: 'Burger',
+  imageUrl: '#98A8B8',
+  isActive: false,
+  startingPrice: 40,
+}];
+
+
 
 export default function HomeViewScreen() {
   return (
     <MainContainer style={styles.container}>
+
+      <Categories categories={categories} type='small' />
+
+      <Categories categories={categories} type='medium' />
+
+      <Categories categories={categories} type='large' />
+
+
       <View style={styles.topContainer}>
         <View style={styles.officeIcon} />
         <View style={styles.topContentContainer}>
@@ -13,7 +58,7 @@ export default function HomeViewScreen() {
         </View>
         <View style={styles.basketIcon} />
       </View>
-      <Text style={styles.greetingText}>Hey Halal, <strong>Good Afternoon!</strong></Text>
+      <Text style={styles.greetingText}>Hey Halal, Good Afternoon!</Text>
       <View style={styles.categoriesContainer}>
         <View style={styles.topCategoriesContainer}>
           <Text style={styles.topTextHeader}>All Categories</Text>

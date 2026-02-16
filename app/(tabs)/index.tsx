@@ -1,5 +1,5 @@
-import CustomButton from '@/components/custom-button';
 import MainContainer from '@/components/main-container';
+import ThemedButton from '@/components/themed-button';
 import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -12,7 +12,7 @@ export default function HomeScreen() {
       <Text style={styles.contentText}>Get all your loved foods in one once place, you just place the orer we do the rest</Text>
       <View style={styles.dotsContainer} />
       <View style={styles.buttonContainer}>
-        <CustomButton title='Next' />
+        <ThemedButton title='Next' />
       </View>
       <View style={styles.linkContainer}>
         <Link style={styles.link} href={'/home'}>Skip</Link>

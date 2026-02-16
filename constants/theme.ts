@@ -10,7 +10,15 @@ const tintColorDark = '#fff';
 
 export const Colors = {
   light: {
-    text: '#11181C',
+    text: '#1E1D1D',
+    buttonDefaultTextColor: '#fff',
+    buttonDefaultBgColor: '#FF7622',
+    buttonDefaultBorderColor: '#FF7622',
+    buttonWarningTextColor: '#FF3326',
+    buttonWarningBgColor: 'transparent',
+    buttonWarningBorderColor: '#FF3326',
+   
+   
     background: '#fff',
     tint: tintColorLight,
     icon: '#687076',
@@ -19,6 +27,16 @@ export const Colors = {
   },
   dark: {
     text: '#ECEDEE',
+    buttonTextColor: '#000',
+    buttonDefaultTextColor: '#000',
+    buttonDefaultBgColor: '#ff0000',
+    buttonDefaultBorderColor: '#ff0000',
+    buttonWarningTextColor: '#FF0',
+    buttonWarningBgColor: 'transparent',
+    buttonWarningBorderColor: '#FF0',
+
+
+
     background: '#151718',
     tint: tintColorDark,
     icon: '#9BA1A6',
